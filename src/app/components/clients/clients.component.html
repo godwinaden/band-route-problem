@@ -1,0 +1,16 @@
+<div class="client-content">
+  <ngb-carousel class="client-content-carousel" #carousel [interval]="6000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus" (slide)="onSlide($event)">
+    <ng-template ngbSlide *ngFor="let client of clients; index as i">
+      <div class="carousel-caption">
+        <h3 class="title">{{client.desc}}</h3>
+      </div>
+      <a href="#" target="_blank" rel="nofollow noopener noreferrer">
+        <div class="picsum-img-wrapper">
+          <img [src]="client.url" alt="{{client.name}}">
+        </div>
+      </a>
+    </ng-template>
+  </ngb-carousel>
+  <hr class="only-on-phone"/>
+  <a class="btn btn-info btn-lg btn-block only-on-phone" href="#" routerLink="home" role="button">Back</a>
+</div>

@@ -1,0 +1,29 @@
+@import "src/styles";
+
+@mixin only-small-devices(){
+  flex-flow: column;
+
+  .row{
+    @include centered;
+    flex-flow: column;
+  }
+  .row div:first-child{
+    margin-bottom: 5px;
+  }
+}
+
+.pricing-content{
+  @include centered;
+
+  .row div:first-child{
+    margin-right: 5px;
+  }
+
+  @include device(phone){
+    @include only-small-devices;
+  }
+
+  @include device(tablet){
+    @include only-small-devices;
+  }
+}

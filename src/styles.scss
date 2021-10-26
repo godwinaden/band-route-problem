@@ -1,0 +1,166 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+$black-color: #171513;
+$dark-brown-color: #5f1e0c;
+$dark-blue-color: #080d20;
+$white-color: #fff;
+$gray-color: #a89f9d;
+$orange-color: #ef3b00;
+$content-padding: 30px;
+
+//centred page_content
+@mixin centered(){
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+//shorthand mixin for absolute positioning | alias for mixin position
+@mixin absolute($args...){
+  @include position (absolute, $args...);
+}
+
+//shorthand mixin for relative positioning | alias for mixin position
+@mixin relative($args...){
+  @include position (relative, $args...);
+}
+
+//shorthand mixin for fixed positioning | alias for mixin position
+@mixin fixed($args...){
+  @include position (fixed, $args...);
+}
+
+@mixin position ($position, $top: null, $right: null, $bottom: null, $left: null){
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+
+}
+
+@mixin transition($x...){
+  -webkit-transition: $x;
+  -moz-transition: $x;
+  -o-transition: $x;
+  -ms-transition: $x;
+  transition: $x;
+}
+
+@mixin opacity($x){
+  opacity: $x;
+}
+
+@mixin right-flex(){
+  display: flex;
+  justify-content: right;
+}
+
+@mixin left-flex(){
+  display: flex;
+  justify-content: left;
+}
+
+@mixin center-flex(){
+  display: flex;
+  justify-content: center;
+}
+
+@mixin bg-overlay($url: '', $color, $opacity) {
+  background: linear-gradient(to right, rgba($color, $opacity), rgba($color, $opacity)), url($url);
+}
+
+@mixin overlay($position, $z-index, $duration){
+  position: $position;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 0;
+  z-index: $z-index;
+  @include transition(opacity $duration ease-in-out, height 0s linear, visibility 0s linear);
+  visibility: hidden;
+  overflow: hidden;
+  @include opacity(0.0);
+
+  &.fade-out{
+    @include transition(opacity $duration ease-in-out, height 0s linear $duration, visibility 0s linear $duration);
+  }
+
+  &.visible{
+    height: 100%;
+    visibility: visible;
+    @include opacity(1.0);
+  }
+}
+
+.body{
+  overflow-y: hidden;
+  overflow-x: hidden;
+  background-color: $dark-blue-color;
+}
+
+@keyframes animatedBackground {
+  from {background-position: 0 0;}
+  to {background-position: 100% 100%;}
+}
+
+@mixin device($breakpoint) {
+  @if($breakpoint == tv)  {
+    @media (min-width: 1201px) { @content }
+  }
+  @if($breakpoint == desktop)  {
+    @media (min-width: 1025px) and (max-width: 1200px) { @content }
+  }
+  @if($breakpoint == laptop)  {
+    @media (min-width: 769px) and (max-width: 1024px) { @content }
+  }
+  @if($breakpoint == tablet)  {
+    @media (min-width: 481px) and (max-width: 768px) { @content }
+  }
+  @if($breakpoint == phone)  {
+    @media (min-width: 320px) and (max-width: 480px) { @content }
+  }
+}
+
+@mixin madeCentered() {
+  float: none !important;
+  padding: 10px 0 10px 0;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  h3,h2,p{
+    text-align: center;
+  }
+}
+
+.only-on-phone{
+  display: none;
+
+  @include device(phone){
+    display: inline-block;
+  }
+}
+
+.only-on-laptop-above{
+  display: none;
+
+  @include device(laptop){
+    display: inline-block;
+  }
+  @include device(desktop){
+    display: inline-block;
+  }
+  @include device(tv){
+    display: inline-block;
+  }
+}
+
+@mixin pageSettings{
+  @include centered;
+  background-color: rgba(0,0,0,0.6);
+}

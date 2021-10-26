@@ -1,0 +1,39 @@
+<div class="input-view-content">
+  <form>
+    <div class="row">
+      <div class="col-sm col-lg col-md col-xl">
+        <div>
+          <div class="row">
+            <div class="col-sm col-lg col-md col-xl">
+              <div class="form-group">
+                <label for="x_axis">X Axis</label>
+                <input (ngModelChange)="changed()" [(ngModel)]="x_axis" [ngModelOptions]="{standalone: true}" type="number" class="form-control" id="x_axis" placeholder="x">
+              </div>
+            </div>
+            <div class="col-sm col-lg col-md col-xl">
+              <div class="form-group">
+                <label for="y_axis">Y Axis</label>
+                <input (ngModelChange)="changed()" [(ngModel)]="y_axis" [ngModelOptions]="{standalone: true}" type="number" class="form-control" id="y_axis" placeholder="y">
+              </div>
+            </div>
+            <div class="col-sm col-lg col-md col-xl">
+              <div class="form-group">
+                <label for="add_button">Add Now</label>
+                <button id="add_button" type="button" (click)="addPoint($event)" class="btn btn-primary">Add</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm col-lg col-md col-xl">
+        <div class="form-group">
+          <label for="points-view">Points View</label>
+          <input type="text" [(ngModel)]="string_routes_inputs" [ngModelOptions]="{standalone: true}" class="form-control" id="points-view" placeholder="Route Points" aria-describedby="help" />
+          <small id="help" class="form-text text-muted">You can also write/paste your points directly in here.</small>
+        </div>
+      </div>
+    </div>
+    <ngb-alert *ngIf="showAlert" [type]="alert.type" (closed)="closeAlert()">{{ alert.message }}</ngb-alert>
+    <button type="button" (click)="optimize($event)" class="btn btn-primary btn-block">Optimize Now</button>
+  </form>
+</div>

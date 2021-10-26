@@ -1,0 +1,40 @@
+@import "src/styles";
+
+@mixin on-small-devices($width){
+  width: 100%;
+  flex-flow: column;
+  padding: 20px;
+
+  a.only-on-phone {
+    margin: 0 10px 0 10px;
+  }
+
+  .client-content-carousel, img{
+    width: $width;
+  }
+
+  .title{
+    font-size: 14px !important;
+  }
+}
+
+.client-content{
+  @include centered;
+  width: 550px;
+
+  .title{
+    //color: lightblue;
+    background-color: rgba(0,0,0,0.7);
+  }
+
+  @include device(phone){
+    @include on-small-devices(300px);
+    background-color: rgba(0,0,0,0.6);
+  }
+
+  @include device(tablet){
+    @include on-small-devices(400px);
+    background-color: rgba(0,0,0,0.6);
+  }
+
+}

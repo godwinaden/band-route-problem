@@ -1,0 +1,20 @@
+import {Component, OnInit} from '@angular/core';
+
+@Component({
+  selector: 'app-left-content',
+  templateUrl: './left-content.component.html',
+  styleUrls: ['./left-content.component.scss']
+})
+export class LeftContentComponent implements OnInit {
+
+  title: string = 'Route Optimizer';
+  closeResult: string = "";
+
+  constructor() {
+  }
+
+  ngOnInit(): void {
+
+  }
+
+}

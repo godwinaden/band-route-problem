@@ -1,0 +1,21 @@
+<div class="output-view-content">
+  <ngb-alert *ngIf="showAlert" [type]="alert.type" (closed)="closeAlert()">{{ alert.message }}</ngb-alert>
+  <button *ngIf="showAlert && !hasResult" (click)="tryAgain()" class="btn btn-primary btn-block">Try Again</button>
+  <table *ngIf="hasResult" class="table table-striped">
+    <thead>
+    <tr>
+      <h3>Route Optimization Result</h3>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let key of keys()">
+      <td>
+        {{key}}
+      </td>
+      <td>{{result?.result?.route[key]}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <hr/>
+  <a class="btn btn-info btn-lg" href="#" routerLink="home" role="button">Back</a>
+</div>

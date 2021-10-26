@@ -1,0 +1,32 @@
+@import "src/styles";
+
+$screen: 100%;
+$width: 700px;
+$space: calc(#{$screen} - #{$width});
+
+.app-content{
+
+  .page_content{
+    @include centered;
+    @include absolute($top: 2px);
+    width: $width;
+    height: 90vh;
+    margin-left: calc(#{$space} / 2);
+  }
+
+  @include device(phone){
+    .page_content{
+      width: 100%;
+      height: auto !important;
+      margin-left: 0;
+    }
+  }
+
+  @include device(tablet){
+    .page_content{
+      width: 100%;
+      height: auto !important;
+      margin-left: 0;
+    }
+  }
+}

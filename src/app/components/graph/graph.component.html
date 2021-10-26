@@ -1,0 +1,14 @@
+<div class="graph-content">
+  <div class="jumbotron center-sized">
+    <h4 class="display-4">Route Optimizer</h4>
+    <p class="lead">
+      {{instruction}}</p>
+    <hr class="my-4">
+    <div class="submenu--container" [ngSwitch]="step">
+      <app-input-view (changeStep)="startProcess($event)" *ngSwitchCase="0"></app-input-view>
+      <app-progress-view [route_inputs]="input_routes" (gottenResult)="getResult($event)" *ngSwitchCase="1"></app-progress-view>
+      <app-output-view (try_again)="tryAgain($event)" [result]="result" *ngSwitchCase="2"></app-output-view>
+      <div *ngSwitchDefault></div>
+    </div>
+  </div>
+</div>
