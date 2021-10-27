@@ -49,8 +49,20 @@ export const typeDefs = gql`
     solution_graph: String
   }
 
+  type City{
+      x: Int!,
+      y: Int!
+  }
+
+  type PerfectRoute{
+      cities: [City],
+      city_tags: [Int],
+      best_route: [Int]
+  }
+
   type Query{
-    route(points: [RoutePoint!]!): BandRoute
+    route(points: [RoutePoint!]!): BandRoute,
+    optimal(points: [RoutePoint]!): PerfectRoute,
   }
 `;
 
