@@ -52,6 +52,8 @@
           </ng-template>
           <ng-template ngbPanelContent>
             <span *ngFor="let tag of optimal?.best_route; index as i; trackBy: trackItem" class="badge badge-success">{{tag}}</span>
+            <hr/>
+            <p class="h6"><strong>Total Distance Travelled On Optimal Route: </strong> {{optimal?.distance_traveled}}</p>
           </ng-template>
         </ngb-panel>
         <ngb-panel id="static-3">
@@ -59,7 +61,7 @@
             <span>&#9733; <strong>Graph</strong> Visual &#9733;</span>
           </ng-template>
           <ng-template ngbPanelContent>
-
+            <plotly-plot [config]="graph_config" class="plotly" [updateOnDataChange]="true" [useResizeHandler]="true" [data]="graph_data" [layout]="graph_layout"></plotly-plot>
           </ng-template>
         </ngb-panel>
       </ngb-accordion>

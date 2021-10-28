@@ -57,7 +57,12 @@ export const typeDefs = gql`
   type PerfectRoute{
       cities: [City],
       city_tags: [Int],
-      best_route: [Int]
+      best_route: [Int],
+      distance_traveled: Float,
+      cities_x_axis: [Int],
+      cities_y_axis: [Int],
+      new_cities_order_x_axis: [Int],
+      new_cities_order_y_axis: [Int]
   }
 
   type Query{

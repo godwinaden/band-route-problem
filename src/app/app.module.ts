@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
-import {NgbActiveModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { LogoComponent } from './components/logo/logo.component';
 import { GraphComponent } from './components/graph/graph.component';
 import { MovingBackgroundComponent } from './components/moving-background/moving-background.component';
@@ -20,6 +20,10 @@ import { OutputViewComponent } from './components/graph/output-view/output-view.
 import {FormsModule} from "@angular/forms";
 import { HomeComponent } from './components/home/home.component';
 import { MenuComponent } from './components/menu/menu.component';
+import {PlotlyModule} from "angular-plotly.js";
+import * as PlotlyJS from 'plotly.js-dist-min'
+
+PlotlyModule.plotlyjs = PlotlyJS;
 
 @NgModule({
   declarations: [
@@ -44,7 +48,8 @@ import { MenuComponent } from './components/menu/menu.component';
     GraphQLModule,
     HttpClientModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    PlotlyModule
   ],
   providers: [],
   bootstrap: [AppComponent]

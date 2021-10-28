@@ -35,12 +35,14 @@ export class ProgressViewComponent implements OnInit, OnDestroy {
         },
         query: this.shouldGetOptimal? gql`query getRoutes($points: [RoutePoint!]!){
             optimal(points: $points) {
-                cities{
-                    x,
-                    y,
-                },
+                cities{x, y,},
                 city_tags,
-                best_route
+                best_route,
+                distance_traveled,
+                cities_x_axis,
+                cities_y_axis,
+                new_cities_order_x_axis,
+                new_cities_order_y_axis
             }
         }` : gql`query getRoutes($points: [RoutePoint!]!){
           route(points: $points) {
