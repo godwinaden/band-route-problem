@@ -4,9 +4,10 @@
   <div *ngIf="hasResult" [ngSwitch]="hasOptimal">
     <div *ngSwitchCase="false">
       <table class="table table-striped">
+        <caption>Optimal Route Optimizer</caption>
         <thead>
           <tr>
-            <h3>Route Optimization Result</h3>
+            <th id="j"><h3>Route Optimization Result</h3></th>
           </tr>
         </thead>
         <tbody>
@@ -27,11 +28,12 @@
           </ng-template>
           <ng-template ngbPanelContent>
             <table class="table table-striped">
+              <caption>Optimal Route Optimizer</caption>
               <thead>
-              <tr>
-                <th scope="col">City</th>
-                <th scope="col">Tag</th>
-              </tr>
+                <tr>
+                  <th scope="col">City</th>
+                  <th scope="col">Tag</th>
+                </tr>
               </thead>
               <tbody>
               <tr *ngFor="let city of optimal.cities; index as i; trackBy: trackItem">
