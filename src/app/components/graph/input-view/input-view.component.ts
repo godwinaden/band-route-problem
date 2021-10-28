@@ -17,7 +17,9 @@ export class InputViewComponent implements OnInit {
     type: "success",
     message: "Things Okay"
   };
-  @Output() changeStep: EventEmitter<Array<Point>> = new EventEmitter();
+  @Output('changeStep') changeStep: EventEmitter<Array<Point>> = new EventEmitter();
+  @Output('changeOptimalOption') changeOptimalOption: EventEmitter<boolean> = new EventEmitter();
+
 
   constructor() { }
 
@@ -39,6 +41,10 @@ export class InputViewComponent implements OnInit {
     }catch (e) {
       this.handleError(e);
     }
+  }
+
+  setOptimalOption(option: boolean): void{
+    this.changeOptimalOption.emit(option);
   }
 
   handleError(e: any): void{

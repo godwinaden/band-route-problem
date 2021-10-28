@@ -11,6 +11,7 @@ import {Subscription} from "rxjs";
 export class ProgressViewComponent implements OnInit, OnDestroy {
 
   @Input("route_inputs") route_inputs: Point[] = [];
+  @Input("shouldGetOptimal") shouldGetOptimal: boolean = true;
   @Output("gottenResult") gottenResult: EventEmitter<Result> = new EventEmitter();
   loading = true;
   error: any;
@@ -32,7 +33,16 @@ export class ProgressViewComponent implements OnInit, OnDestroy {
         variables: {
           points: this.route_inputs,
         },
-        query: gql`query getRoutes($points: [RoutePoint!]!){
+        query: this.shouldGetOptimal? gql`query getRoutes($points: [RoutePoint!]!){
+            optimal(points: $points) {
+                cities{
+                    x,
+                    y,
+                },
+                city_tags,
+                best_route
+            }
+        }` : gql`query getRoutes($points: [RoutePoint!]!){
           route(points: $points) {
             eulerian_circuit,
             band_tour_graph,

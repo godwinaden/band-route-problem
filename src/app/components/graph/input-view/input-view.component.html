@@ -33,6 +33,14 @@
         </div>
       </div>
     </div>
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="optimization_type" ngbDropdownToggle>Select Optimization Type</button>
+      <div ngbDropdownMenu aria-labelledby="optimization_type">
+        <button (click)="setOptimalOption(true)" ngbDropdownItem>Optimal : Best Optimization</button>
+        <button (click)="setOptimalOption(false)" ngbDropdownItem>Just Right: Good Optimization</button>
+      </div>
+    </div>
+    <hr/>
     <ngb-alert *ngIf="showAlert" [type]="alert.type" (closed)="closeAlert()">{{ alert.message }}</ngb-alert>
     <button type="button" (click)="optimize($event)" class="btn btn-primary btn-block">Optimize Now</button>
   </form>

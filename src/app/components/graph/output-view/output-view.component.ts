@@ -9,9 +9,11 @@ import {Alert, Result} from "../../../globals";
 export class OutputViewComponent implements OnInit {
 
   @Input("result") result: Result | undefined;
+  @Input("hasOptimal") hasOptimal: boolean = true;
   @Output("try_again") try_again: EventEmitter<number> = new EventEmitter();
   showAlert: boolean = false;
   hasResult: boolean = false;
+  optimal: any;
   alert: Alert = {
     type: "success",
     message: "Things Okay"
@@ -24,6 +26,7 @@ export class OutputViewComponent implements OnInit {
       this.alert.type = "success";
       this.alert.message = "The Route Optimizer Has Ascertain The Following:";
       this.hasResult = true;
+      this.optimal = this.hasOptimal? this.result?.result?.optimal: null;
       console.log(`Results: ${this.result?.result?.route}`)
     }else{
       this.alert.type = "danger";
@@ -44,6 +47,10 @@ export class OutputViewComponent implements OnInit {
 
   tryAgain(): void{
     this.try_again.emit(0);
+  }
+
+  trackItem(index: number, item: any){
+    return item;
   }
 
 }

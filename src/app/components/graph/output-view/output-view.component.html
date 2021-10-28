@@ -1,21 +1,68 @@
 <div class="output-view-content">
   <ngb-alert *ngIf="showAlert" [type]="alert.type" (closed)="closeAlert()">{{ alert.message }}</ngb-alert>
   <button *ngIf="showAlert && !hasResult" (click)="tryAgain()" class="btn btn-primary btn-block">Try Again</button>
-  <table *ngIf="hasResult" class="table table-striped">
-    <thead>
-    <tr>
-      <h3>Route Optimization Result</h3>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let key of keys()">
-      <td>
-        {{key}}
-      </td>
-      <td>{{result?.result?.route[key]}}</td>
-    </tr>
-    </tbody>
-  </table>
+  <div *ngIf="hasResult" [ngSwitch]="hasOptimal">
+    <div *ngSwitchCase="false">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <h3>Route Optimization Result</h3>
+          </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let key of keys()">
+          <td>
+            {{key}}
+          </td>
+          <td>{{result?.result?.route[key]}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngSwitchDefault>
+      <ngb-accordion *ngIf="optimal != null" [closeOthers]="true" activeIds="static-1">
+        <ngb-panel id="static-1">
+          <ng-template ngbPanelTitle>
+            <span>&#9733; <strong>City</strong> Information &#9733;</span>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th scope="col">City</th>
+                <th scope="col">Tag</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let city of optimal.cities; index as i; trackBy: trackItem">
+                <th scope="row">x: {{ city?.x }} y: {{city?.y}}</th>
+                <td>
+                  {{ optimal.city_tags[i] }}
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </ng-template>
+        </ngb-panel>
+        <ngb-panel id="static-2">
+          <ng-template ngbPanelTitle>
+            <span>&#9733; <strong>Optimal</strong> Best Route To Take &#9733;</span>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <span *ngFor="let tag of optimal?.best_route; index as i; trackBy: trackItem" class="badge badge-success">{{tag}}</span>
+          </ng-template>
+        </ngb-panel>
+        <ngb-panel id="static-3">
+          <ng-template ngbPanelTitle>
+            <span>&#9733; <strong>Graph</strong> Visual &#9733;</span>
+          </ng-template>
+          <ng-template ngbPanelContent>
+
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
+    </div>
+  </div>
   <hr/>
   <a class="btn btn-info btn-lg" href="#" routerLink="home" role="button">Back</a>
 </div>

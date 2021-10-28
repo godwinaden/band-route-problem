@@ -11,6 +11,7 @@ export class GraphComponent implements OnInit {
   step: number = 0;
   instruction: string = "Kindly Add Various Locations You Intend to Visit In Points (x,y)";
   input_routes: Point[] = [];
+  shouldGetOptimal: boolean = true;
   result: Result | undefined;
 
   constructor() { }
@@ -21,6 +22,10 @@ export class GraphComponent implements OnInit {
   startProcess(routes: Array<Point>): void {
     this.input_routes = routes;
     this.changeStep(1);
+  }
+
+  changeOptimizationOption(option: boolean): void{
+    this.shouldGetOptimal = option;
   }
 
   tryAgain(step: number): void {
