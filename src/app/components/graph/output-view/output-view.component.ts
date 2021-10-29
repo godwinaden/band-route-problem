@@ -10,6 +10,7 @@ export class OutputViewComponent implements OnInit {
 
   @Input("result") result: Result | undefined;
   @Input("hasOptimal") hasOptimal: boolean = true;
+  @Input("timer") timer: number = 0;
   @Output("try_again") try_again: EventEmitter<number> = new EventEmitter();
   showAlert: boolean = false;
   hasResult: boolean = false;

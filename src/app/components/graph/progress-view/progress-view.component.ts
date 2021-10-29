@@ -13,6 +13,7 @@ export class ProgressViewComponent implements OnInit, OnDestroy {
   @Input("route_inputs") route_inputs: Point[] = [];
   @Input("shouldGetOptimal") shouldGetOptimal: boolean = true;
   @Output("gottenResult") gottenResult: EventEmitter<Result> = new EventEmitter();
+  @Output("updateTimer") updateTimer: EventEmitter<number> = new EventEmitter();
   loading = true;
   error: any;
   result: any;
@@ -27,6 +28,7 @@ export class ProgressViewComponent implements OnInit, OnDestroy {
   }
 
   sendRequestToServer(): any{
+    let startTimer = performance.now();
     try{
       this.querySubscription = this.apollo.query({
         errorPolicy: 'all',
@@ -58,11 +60,13 @@ export class ProgressViewComponent implements OnInit, OnDestroy {
           }
         }`,
       }).subscribe((result: any) => {
+        let endTimer = performance.now() - startTimer;
         this.result = result?.data;
         this.loading = result.loading;
         this.error = result.error;
         if(this.error) this.gottenResult.emit({type: 0, result: `${this.error}`});
         else this.gottenResult.emit({type: 1, result: this.result});
+        this.updateTimer.emit(endTimer);
       });
     }catch (e) {
       console.error(e);

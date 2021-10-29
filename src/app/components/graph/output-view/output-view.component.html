@@ -54,6 +54,7 @@
             <span *ngFor="let tag of optimal?.best_route; index as i; trackBy: trackItem" class="badge badge-success">{{tag}}</span>
             <hr/>
             <p class="h6"><strong>Total Distance Travelled On Optimal Route: </strong> {{optimal?.distance_traveled}}</p>
+            <p class="h6"><strong>Optimization Time: </strong> {{timer}} milliseconds</p>
           </ng-template>
         </ngb-panel>
         <ngb-panel id="static-3">

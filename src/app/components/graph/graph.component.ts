@@ -13,6 +13,7 @@ export class GraphComponent implements OnInit {
   input_routes: Point[] = [];
   shouldGetOptimal: boolean = true;
   result: Result | undefined;
+  optTime: number = 0;
 
   constructor() { }
 
@@ -22,6 +23,10 @@ export class GraphComponent implements OnInit {
   startProcess(routes: Array<Point>): void {
     this.input_routes = routes;
     this.changeStep(1);
+  }
+
+  updateTime(timeTaken: number): void{
+    this.optTime = timeTaken;
   }
 
   changeOptimizationOption(option: boolean): void{
