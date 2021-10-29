@@ -65,10 +65,10 @@ the 2-opt algorithm has a O(n2) time complexity while the 3-opt is O(n3) time co
 
 ### Time Tracking:
 
-    point40: The 2-opt algorithm took approximately 34 milliseconds to analysis the points40 test 
+    point40: The 2-opt algorithm took approximately 1606 milliseconds to analysis the points40 test 
     data.
-    point200: It took approximately 54 milliseconds.
-    point500: This took 300 milliseconds.
+    point200: It took approximately 2304 milliseconds.
+    point500: This took about 8345 milliseconds.
     
 Because of some constraints and time, I intended and worked towards outputing a animated visualized diagram but I just displayed 
 with text format and static graph hoping that in the future with time, I will be able to visualize the result with real life mapping techniques and technology.

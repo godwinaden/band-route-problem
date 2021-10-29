@@ -8,7 +8,7 @@ $space: calc(#{$screen} - #{$width});
 
   .page_content{
     @include centered;
-    @include absolute($top: 2px);
+    @include relative($top: 50px);
     width: $width;
     height: 90vh;
     margin-left: calc(#{$space} / 2);
