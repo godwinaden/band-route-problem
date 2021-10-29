@@ -70,6 +70,8 @@ $content-padding: 30px;
 }
 
 @mixin bg-overlay($url: '', $color, $opacity) {
+  background-size: contain;
+  position: fixed;
   background: linear-gradient(to right, rgba($color, $opacity), rgba($color, $opacity)), url($url);
 }
 
@@ -97,7 +99,7 @@ $content-padding: 30px;
 }
 
 .body{
-  overflow-y: hidden;
+  //overflow-y: hidden;
   overflow-x: hidden;
   background-color: $dark-blue-color;
 }
