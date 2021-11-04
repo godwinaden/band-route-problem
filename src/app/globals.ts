@@ -4,6 +4,11 @@
 'use strict';
 
 import { gql } from "@apollo/client/core";
+import {EventEmitter} from "@angular/core";
+
+export let globals:any = {
+  styleTheme: 0,
+};
 
 export type Client = {
   url: string;
@@ -24,6 +29,14 @@ export type Result = {
 export type Point = {
   x: number;
   y: number;
+}
+
+export class ChangeThemeService{
+  public theme$: EventEmitter<number> = new EventEmitter();
+
+  public change(theme: number): void{
+    this.theme$.emit(theme);
+  }
 }
 
 export const typeDefs = gql`
@@ -70,4 +83,3 @@ export const typeDefs = gql`
     optimal(points: [RoutePoint]!): PerfectRoute,
   }
 `;
-

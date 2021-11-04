@@ -21,7 +21,9 @@ import {FormsModule} from "@angular/forms";
 import { HomeComponent } from './components/home/home.component';
 import { MenuComponent } from './components/menu/menu.component';
 import {PlotlyModule} from "angular-plotly.js";
-import * as PlotlyJS from 'plotly.js-dist-min'
+import * as PlotlyJS from 'plotly.js-dist-min';
+import { ChangeThemeComponent } from './components/change-theme/change-theme.component';
+import {ChangeThemeService} from "./globals";
 
 PlotlyModule.plotlyjs = PlotlyJS;
 
@@ -40,7 +42,8 @@ PlotlyModule.plotlyjs = PlotlyJS;
     ProgressViewComponent,
     OutputViewComponent,
     HomeComponent,
-    MenuComponent
+    MenuComponent,
+    ChangeThemeComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,7 @@ PlotlyModule.plotlyjs = PlotlyJS;
     FormsModule,
     PlotlyModule
   ],
-  providers: [],
+  providers: [ChangeThemeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

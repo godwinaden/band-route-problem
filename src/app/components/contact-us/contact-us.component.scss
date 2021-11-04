@@ -1,23 +1,11 @@
-@import "src/styles";
+.transparent-content{
+  width: auto !important;
+}
 
-.contact-us-content{
-  @include centered;
-
-  .btn-back{margin-left: 10px}
-  .center-sized{
-    width: 450px !important;
-  }
-
-  @include device(phone){
-    .center-sized{
-      width: 300px !important;
-    }
-  }
-
-  @include device(tablet){
-    background-color: rgba(0,0,0,0.6);
-    .center-sized{
-      width: 400px !important;
-    }
-  }
+.btn-back{
+  margin-left: 10px;
+  margin-top: 20px;
+}
+.center-sized{
+  width: auto !important;
 }

@@ -1,8 +1,6 @@
-<div class="app-content">
+<div [ngClass]="styleTheme == 0? 'theme-blue' : 'theme-purple'" class="app-content">
   <app-moving-background></app-moving-background>
-  <div class="page_content">
-    <router-outlet>
-
-    </router-outlet>
+  <div class="theme-content container container-fluid bg-transparent">
+    <router-outlet></router-outlet>
   </div>
 </div>

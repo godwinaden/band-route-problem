@@ -7,8 +7,6 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  @Input("flowRight") flowRight: boolean = true;
-
   constructor() { }
 
   ngOnInit(): void {

@@ -19,6 +19,7 @@ export class InputViewComponent implements OnInit {
   };
   @Output('changeStep') changeStep: EventEmitter<Array<Point>> = new EventEmitter();
   @Output('changeOptimalOption') changeOptimalOption: EventEmitter<boolean> = new EventEmitter();
+  hasOptimalOption: boolean = true;
 
 
   constructor() { }
@@ -44,6 +45,7 @@ export class InputViewComponent implements OnInit {
   }
 
   setOptimalOption(option: boolean): void{
+    this.hasOptimalOption = option;
     this.changeOptimalOption.emit(option);
   }
 

@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import { Client } from 'src/app/globals';
+import {Client} from 'src/app/globals';
 
 @Component({
   selector: 'app-clients',

@@ -7,9 +7,6 @@ import {Component, OnInit} from '@angular/core';
 })
 export class LeftContentComponent implements OnInit {
 
-  title: string = 'Route Optimizer';
-  closeResult: string = "";
-
   constructor() {
   }
 

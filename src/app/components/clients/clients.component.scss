@@ -1,12 +1,12 @@
 @import "src/styles";
 
 @mixin on-small-devices($width){
-  width: 100%;
-  flex-flow: column;
-  padding: 20px;
+  .fixed-width{
+    max-width: $width;
+  }
 
   a.only-on-phone {
-    margin: 0 10px 0 10px;
+    margin-top: 10px;
   }
 
   .client-content-carousel, img{
@@ -18,23 +18,21 @@
   }
 }
 
-.client-content{
-  @include centered;
-  width: 550px;
+.title{
+  //color: lightblue;
+  background-color: rgba(0,0,0,0.7);
+}
 
-  .title{
-    //color: lightblue;
-    background-color: rgba(0,0,0,0.7);
+.centered{
+  .fixed-width{
+    max-width: 550px;
   }
+}
 
-  @include device(phone){
-    @include on-small-devices(300px);
-    background-color: rgba(0,0,0,0.6);
-  }
+@include device(phone){
+  @include on-small-devices(300px);
+}
 
-  @include device(tablet){
-    @include on-small-devices(400px);
-    background-color: rgba(0,0,0,0.6);
-  }
-
+@include device(tablet){
+  @include on-small-devices(400px);
 }

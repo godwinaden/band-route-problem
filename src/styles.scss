@@ -99,9 +99,7 @@ $content-padding: 30px;
 }
 
 .body{
-  //overflow-y: hidden;
-  overflow-x: hidden;
-  background-color: $dark-blue-color;
+  overflow-x: hidden !important;
 }
 
 @keyframes animatedBackground {
@@ -166,3 +164,87 @@ $content-padding: 30px;
   @include centered;
   background-color: rgba(0,0,0,0.6);
 }
+
+@mixin theme($name, $color, $menuColor) {
+  // Define colors in your theme
+  $primary: $color;
+  $secondary: lighten(adjust-hue($color, 20), 10%);
+  $lighter: lighten($color, 30%);
+
+  // Add your classes with css colors added
+  .#{$name} {
+
+    .navbar-toggler{
+      color: $primary;
+    }
+
+    .navbar{
+      background-color: $primary;
+    }
+
+    .transparent-content{
+      padding: 20px !important;
+      background-color: rgba(0,0,0,0.9);
+      width: 100%;
+      height: auto;
+
+      .only-on-phone{
+        margin-bottom: 20px;
+      }
+
+      .centered{
+        @include centered;
+      }
+
+      p{
+        font-size: 18px;
+        color: #bfbfbf;
+        text-wrap: normal;
+        text-align: left;
+      }
+
+      h1, h2{
+        color: $white-color;
+      }
+    }
+
+    .jumbotron{
+      h1.display-4{
+        color: $black-color
+      }
+
+      p{
+        font-size: 15px;
+      }
+
+      p.lead{
+        font-size: 18px;
+      }
+
+      p.lead, p{
+        color: $black-color;
+      }
+    }
+
+    .card p{
+      color: rgba(0, 0, 0, 0.8);
+      font-size: 18px;
+    }
+
+    .navbar li a {
+      color: $menuColor !important;
+
+      &:hover{
+        color: lighten($menuColor, 10%) !important;
+      }
+
+      &.active{
+        color: lighten($menuColor, 30%) !important;
+      }
+    }
+
+  }
+}
+
+@include theme(theme-blue, $dark-blue-color, dodgerblue);
+@include theme(theme-purple, darken(purple, 10%), lighten(purple, 20%));

@@ -18,7 +18,7 @@
             </div>
             <div class="col-sm col-lg col-md col-xl">
               <div class="form-group">
-                <label for="add_button">Add Now</label>
+                <label for="add_button">Add Now</label><br/>
                 <button id="add_button" type="button" (click)="addPoint($event)" class="btn btn-primary">Add</button>
               </div>
             </div>
@@ -33,11 +33,23 @@
         </div>
       </div>
     </div>
-    <div ngbDropdown class="d-inline-block">
-      <button class="btn btn-outline-primary" id="optimization_type" ngbDropdownToggle>Select Optimization Type</button>
-      <div ngbDropdownMenu aria-labelledby="optimization_type">
-        <button (click)="setOptimalOption(true)" ngbDropdownItem>Optimal : Best Optimization</button>
-        <button (click)="setOptimalOption(false)" ngbDropdownItem>Just Right: Good Optimization</button>
+    <div class="d-inline-block">
+      <div class="form-group form-group-inline">
+        <label for="optimizer_type">Optimization Options: </label>
+        <div id="optimizer_type">
+          <div class="form-check form-check-inline">
+            <input (change)="setOptimalOption(true)" type="radio" class="form-check-input" name="optimal" id="optimal" [checked]="hasOptimalOption"/>
+            <label class="form-check-label" for="optimal">
+              Get Optimal Routes
+            </label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input type="radio" (change)="setOptimalOption(false)" class="form-check-input" name="good" id="good" [checked]="!hasOptimalOption"/>
+            <label class="form-check-label" for="good">
+              Get Good Routes
+            </label>
+          </div>
+        </div>
       </div>
     </div>
     <hr/>

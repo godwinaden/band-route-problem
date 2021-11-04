@@ -3,7 +3,7 @@
   <button *ngIf="showAlert && !hasResult" (click)="tryAgain()" class="btn btn-primary btn-block">Try Again</button>
   <div *ngIf="hasResult" [ngSwitch]="hasOptimal">
     <div *ngSwitchCase="false">
-      <table class="table table-striped">
+      <table class="table table-striped table-responsive">
         <caption>Optimal Route Optimizer</caption>
         <thead>
           <tr>
@@ -27,7 +27,7 @@
             <span>&#9733; <strong>City</strong> Information &#9733;</span>
           </ng-template>
           <ng-template ngbPanelContent>
-            <table class="table table-striped">
+            <table class="table table-striped table-responsive">
               <caption>Optimal Route Optimizer</caption>
               <thead>
                 <tr>

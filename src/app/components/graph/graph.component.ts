@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Point, Result} from "../../globals";
+import {globals, Point, Result} from "../../globals";
 
 @Component({
   selector: 'app-graph',

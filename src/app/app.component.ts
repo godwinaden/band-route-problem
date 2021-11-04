@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {ChangeThemeService, globals} from "./globals";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Band-Route-Problem';
+  styleTheme:number = globals.styleTheme;
+
+  constructor(changeThemeService: ChangeThemeService){
+    changeThemeService.theme$.subscribe(
+      theme => this.styleTheme = theme,
+    )
+  }
 }
