@@ -165,6 +165,28 @@ $content-padding: 30px;
   background-color: rgba(0,0,0,0.6);
 }
 
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white, 50%)){
+  //for chrome browsers
+  &::-webkit-scrollbar{
+    width: $size;
+    height: $size;
+  }
+
+  &::-webkit-scrollbar-thumb{
+    background: $foreground-color;
+  }
+
+  &::-webkit-scrollbar-track{
+    background: $background-color;
+  }
+
+  // For Internet Explorer
+  & {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}
+
 @mixin theme($name, $color, $menuColor) {
   // Define colors in your theme
   $primary: $color;
@@ -240,6 +262,14 @@ $content-padding: 30px;
 
       &.active{
         color: lighten($menuColor, 30%) !important;
+      }
+    }
+
+    &.app-content{
+      @if $name == theme-blue {
+        @include scrollbars(6px, darken($primary, 20%), $primary);
+      }@else {
+        @include scrollbars(7px, darken($primary, 30%), lighten($primary, 5%));
       }
     }
 
